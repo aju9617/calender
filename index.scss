@@ -1,0 +1,148 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  @include flex-center;
+  font-family: 'Roboto', sans-serif;
+  background-color: black;
+  font-size: 1.4rem;
+  min-height: 100vh;
+}
+
+.calender__container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  @include flex-center;
+  justify-content: flex-start;
+  flex-direction: column;
+  min-height: 40rem;
+  width: 35rem;
+  padding: 2rem;
+  background-color: #ffffff1f;
+  backdrop-filter: blur(40px);
+  border: solid 2px transparent;
+  border-radius: 0.4rem;
+  background-clip: padding-box;
+  box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
+
+  &--nav {
+    width: 100%;
+    padding-bottom: 0.3rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    &-btn {
+      @include flex-center;
+      cursor: pointer;
+      height: 4rem;
+      width: 4rem;
+      font-size: 1.5rem;
+      border-radius: 50%;
+      background-color: rgb(195, 195, 195);
+
+      &-right {
+        height: 1.8rem;
+        transform: rotate(180deg);
+        // width: 3.5rem;
+      }
+
+      &-left {
+        height: 1.8rem;
+      }
+
+      &:hover {
+        background-color: #f6901c;
+        color: white;
+      }
+    }
+
+    &-month {
+      color: #ffffff;
+      font-weight: 400;
+    }
+  }
+  &--day {
+    margin-top: 1rem;
+    width: 100%;
+    display: grid;
+    grid-gap: 0.2rem;
+    grid-template-columns: repeat(7, 1fr);
+    justify-items: center;
+    align-items: center;
+
+    &-value {
+      cursor: pointer;
+      @include flex-center;
+      height: 4rem;
+      width: 4rem;
+      font-size: 1.5rem;
+      font-weight: 500;
+      border-radius: 50%;
+      color: white;
+      //   background-color: rgb(157, 158, 157);
+
+      &:hover,
+      &.active {
+        background-color: #ff0000af;
+        color: white;
+      }
+    }
+  }
+  &--date {
+    margin-top: 2.5rem;
+    width: 100%;
+    flex-grow: 1;
+    // background-color: red;
+
+    display: grid;
+    grid-gap: 0.5rem;
+    grid-template-columns: repeat(7, 1fr);
+    justify-items: center;
+    align-items: center;
+    &-value {
+      cursor: pointer;
+      @include flex-center;
+      height: 4rem;
+      width: 4rem;
+      font-size: 1.5rem;
+      font-weight: 500;
+      border-radius: 0.2rem;
+      background-color: rgba(227, 234, 251, 0.548);
+      &.active {
+        background-color: #ffa600;
+        color: white;
+      }
+      &:hover {
+        background-color: blue;
+        color: white;
+      }
+      &.inactive {
+        background-color: transparent;
+        color: transparent;
+      }
+    }
+  }
+}
+
+.copyright {
+  margin-top: 1rem;
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: white;
+}
